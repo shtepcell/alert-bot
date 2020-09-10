@@ -10,12 +10,10 @@ const port = 2020;
 
 app.use(bodyParser.json());
 
-app.post('/alert/:service', async (req, res) => {
-    const { service } = req.params;
+app.post('/alert', async (req, res) => {
+    const { project, message, url } = req.body;
 
-    console.log(req.body);
-
-    await sendMessage(`Ошибка в проекте ${service}`);
+    await sendMessage(`Error in ${project}:\n\n${message}\n\n[Link](${url})`);
     return res.sendStatus(200);
 });
 
