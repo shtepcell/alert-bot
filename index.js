@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.post('/alert', async (req, res) => {
     const { project, message, url } = req.body;
 
-    await sendMessage(`Error in ${project}:\n\n${message}\n\n[Link](${url})`);
+    await sendMessage(`*[SENTRY] Ошибка в ${project}:*\n\n${message}\n\n[Link](${url})`);
     return res.sendStatus(200);
 });
 
